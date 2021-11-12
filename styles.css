@@ -4,7 +4,7 @@
     --text-size-sm: 1rem;
     --text-size-sl: 1.1rem;
     --text-size-md: 2rem;
-    --text-size-lg: 3.5rem;
+    --text-size-lg: 5rem;
     --letter-spacing: 0.15rem;
     --color-primary: #f2f2f2;
     --color-secondary: #090909;
@@ -43,16 +43,22 @@ section {
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
 }
+#card {
+    background: none;
+    margin-bottom: 20px;
+}
 
-h1 {
+h1  {
     margin-bottom: 20px;     
     font-size: var(--text-size-lg);  
     background: none;
 }
-h2 {
+
+h2, #cardValue {
     width: 100%;
     font-size: var(--text-size-md);
     background: none;
+    margin-bottom: 20px;
 }
 
 #buttons {
@@ -62,12 +68,12 @@ h2 {
     margin-top: 70px;
 }
 
-#higherbutton, #lowerbutton {
+#higherbutton, #lowerbutton, #submitbutton {
     background: rgba(255, 255, 255, 0.797);
     border: 1px solid rgb(33, 117, 134);
     color: var( --color-secondary);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
+    transition: all 0.8s ease 0s;
     padding: 15px;
     margin: 10px;
     border-radius: 4px;
@@ -77,15 +83,20 @@ h2 {
     outline: none;
 }
 
-#higherbutton:hover, #lowerbutton:hover {
+#higherbutton:hover, #lowerbutton:hover, #submitbutton:hover {
     color: white;
     font-size: var(--text-size-sl);
-    /* background: rgb(9,106,121); */
     background: radial-gradient(circle, rgba(9,106,121,1) 0%, rgba(0,212,255,1) 100%);
     box-shadow: 0px 15px 20px rgba(0,212,255,1);
     transform: translateY(-7px);
 }
 
-#higherbutton:active, #lowerbutton:active {
+#higherbutton:active, #lowerbutton:active, #submitbutton:active {
     transform: translateY(-1px);
 }
+
+#cardImage {
+    height: 120px;
+    border-radius: 4px;
+}
+
