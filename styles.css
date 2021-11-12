@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+:root {
+    --text-size-sm: 1rem;
+    --text-size-sl: 1.1rem;
+    --text-size-md: 2rem;
+    --text-size-lg: 3.5rem;
+    --letter-spacing: 0.15rem;
+    --color-primary: #f2f2f2;
+    --color-secondary: #090909;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nova Square', cursive;
+    font-size: 62.5%;
+    letter-spacing: var(--letter-spacing);
+    background: rgb(9,106,121);
+    background: radial-gradient(circle, rgba(9,106,121,1) 0%, rgba(0,212,255,1) 100%);
+    color: var(--color-primary);
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    width: 100rem;
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+h1 {
+    margin-bottom: 20px;     
+    font-size: var(--text-size-lg);  
+    background: none;
+}
+h2 {
+    width: 100%;
+    font-size: var(--text-size-md);
+    background: none;
+}
+
+#buttons {
+    display:flex;
+    flex-direction: row;
+    background: none;
+    margin-top: 70px;
+}
+
+#higherbutton, #lowerbutton {
+    background: rgba(255, 255, 255, 0.797);
+    border: 1px solid rgb(33, 117, 134);
+    color: var( --color-secondary);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: var(--text-size-sl);
+    cursor: pointer;
+    outline: none;
+}
+
+#higherbutton:hover, #lowerbutton:hover {
+    color: white;
+    font-size: var(--text-size-sl);
+    /* background: rgb(9,106,121); */
+    background: radial-gradient(circle, rgba(9,106,121,1) 0%, rgba(0,212,255,1) 100%);
+    box-shadow: 0px 15px 20px rgba(0,212,255,1);
+    transform: translateY(-7px);
+}
+
+#higherbutton:active, #lowerbutton:active {
+    transform: translateY(-1px);
+}
