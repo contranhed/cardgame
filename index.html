@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <script type="text/javascript" src="app.js" defer></script>
 </head>
 <body>
     <section>
@@ -21,10 +21,13 @@
                 <h2 id="greeting">Play a guessing game with cards</h2>
                 <h2 id="message"></h2>
                 <div id="buttons">
-                    <button id="lowerbutton" class="btn">lower</button>
-                    <button id="higherbutton" class="btn">higher</button>
+                    <button id="samebutton"onclick="checkAnswer('same')">same</button>
+                    <button id="lowerbutton" onclick="checkAnswer('lower')">lower</button>
+                    <button id="higherbutton"onclick="checkAnswer('higher')">higher</button>
+
                 </div>
                 <button id="submitbutton"></button>
+                <button id="playbutton"></button>
             </div>
             
         </div>
