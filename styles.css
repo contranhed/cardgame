@@ -3,12 +3,13 @@
 :root {
     --text-size-xs: 1rem;
     --text-size-sm: 1.1rem;
-    --text-size-md: 1.3rem;
+    --text-size-md: 2rem;
     --text-size-lg: 2.5rem;
     --text-size-xl: 3.5rem;
     --letter-spacing: 0.15rem;
     --color-primary: #f2f2f2;
     --color-secondary: #090909;
+    --color-highlight: #960018;
 }
 
 * {
@@ -78,7 +79,7 @@ h2, #cardValue, #message {
     display: flex;
     flex-direction: row;
     background: none;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #higherbutton, #lowerbutton, #submitbutton, #playbutton, #samebutton {
@@ -109,11 +110,35 @@ h2, #cardValue, #message {
 } */
 
 #cardImage {
-    height: 280px;
+    height: 330px;
     border-radius: 14px;
 }
 
 #response {
     margin: 0;
 }
+
+#progress {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    background: none;
+}
+
+#rounds, #points {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    font-size: var(--text-size-md);
+    background: none;
+    margin: 1rem 6rem 6rem 6rem;
+    color: var(--color-highlight);
+}
+
+    
+
+
+
 
