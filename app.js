@@ -8,6 +8,7 @@ const h1HeaderElement = document.getElementById('h1header')
 const greetingElement = document.getElementById('greeting')
 const messageElement = document.getElementById('message')
 const cardElement = document.getElementById('card')
+const containerElement = document.getElementById('container')
 const imageElement = document.getElementById('cardImage')
 const roundsElement = document.getElementById('rounds')
 const pointsElement = document.getElementById('points')
@@ -47,7 +48,6 @@ async function getDeck() {
             'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2')
         const data = await res.json() // When the response has been received, rewrite it to json and store the data in a variable    
         deck = data // Assign the data to the variable declared on top of the file to enable wider access to the deck.
-        console.log('Deck was successfully retrieved!')
     }
     catch (e) { // Error handling
         console.log('Not successful with the fetch')
@@ -89,7 +89,7 @@ async function getNewCard() {
             `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=1`)
         const data = await res.json() // Store the response (translated to JSON) in a variable
         playingCard = data.cards[0] // Set the current card to the card value received in the API response
-        cardElement.children[1].setAttribute('src', playingCard.image) // Set the image attribute on the card HTML element.
+        containerElement.children[0].setAttribute('src', playingCard.image) // Set the image attribute on the card HTML element.
         
         // Insert text in existing element.
         greetingElement.innerText = `Will next card be the same, lower or higher than ${playingCard.value}?`
@@ -97,27 +97,27 @@ async function getNewCard() {
         // Reassign value on the the higher cards
         // NB! Taking full advantage of implicit type cocercion in JavaScript!
         if (playingCard.value > 1 && playingCard.value < 10) {
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         } 
         else if (playingCard.value == '10') {
             playingCard.value = 10
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         }
         else if (playingCard.value == 'JACK') {
             playingCard.value = 11
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         } 
         else if (playingCard.value == 'QUEEN') {
             playingCard.value = 12
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         } 
         else if (playingCard.value == 'KING') {
             playingCard.value = 13
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         } 
         else if (playingCard.value == 'ACE') {
             playingCard.value = 14
-            cardElement.children[1].setAttribute('src', playingCard.image)
+            containerElement.children[0].setAttribute('src', playingCard.image)
         }
     return playingCard // Return the current card object (with reassigned value if needed)
     } catch(e) { // Error handling
@@ -145,7 +145,7 @@ async function checkAnswer(guess) {
             correctAnswer = 'same'
         }
         
-        greetingElement.style.fontSize = '3rem' // Increase font size.
+        greetingElement.style.fontSize = '4rem' // Increase font size.
         // Check if the player's guess is correct
         if (guess == correctAnswer) {
             greetingElement.innerText = 'CORRECT'
@@ -155,7 +155,7 @@ async function checkAnswer(guess) {
         }
         // Display former hidden elements.
         messageElement.style.display = 'block'
-        messageElement.innerText = 'Next guess: same, lower or higher?'
+        messageElement.innerText = `Next card: same, lower or higher than ${playingCard.value}?`
         roundsElement.style.display = 'block'
         pointsElement.style.display = 'block'
         
@@ -163,7 +163,7 @@ async function checkAnswer(guess) {
 
         // Status board presented to the player.
         pointsElement.innerText = `Points: ${points}`
-        roundsElement.innerText = `Round: ${rounds}/10`
+        roundsElement.innerText = `Round: ${rounds} / 10`
         
         // Check if it is on round 10 to end the game
         if (rounds === 10) {
@@ -186,10 +186,15 @@ async function checkAnswer(guess) {
 
 /**
  * 
- * @function resetGame reloads the page
+ * @function resetGame reloads the page and redirects player to first page
  */
 async function resetGame() {
-    window.location.reload()
+    try {
+        window.location.reload()
+    } catch (e) {
+        console.log('Could not reset game')
+        console.log(e)
+    }
 }
 
 // Call to start the game.

@@ -1,0 +1,102 @@
+@media screen and (max-width: 56.25em) { 
+    h1 {
+        font-size: var(--text-size-md) !important;  
+    }
+
+    h2 {
+        font-size: var(--text-size-md) !important;
+    }
+    img {
+        margin: 2rem !important;
+    }
+
+    #cardImage {
+        height: 300px;
+        margin: 10rem;
+    }
+
+    .btn {
+        font-size: var(--text-size-sm) !important;
+        padding: 10px !important;
+    }
+}
+
+@media screen and (max-width: 43.75em) { 
+    #container {
+        flex-direction: column;
+        margin-bottom: 0px !important;
+    }
+
+    img {
+        margin: 0rem !important;
+    }
+
+    #cardImage {
+        height: 170px;
+        margin-top: 50px !important;
+    }
+
+    #rounds, #points {
+        font-size: var(--text-size-sl) !important;
+        margin-bottom: 20px !important;
+        margin-top: 0px !important;
+    }
+
+    #greeting  {
+        font-size: var(--text-size-md) !important;
+    }
+
+    #message {
+        font-size: var(--text-size-sl) !important;
+        margin-bottom: 0px;
+    }
+}
+
+/* Managing Apple product device sizes */
+@media only screen and (device-width : 768px) and (device-width : 1024px) and (orientation : landscape) {
+	#section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    
+    #container {
+        height: 768px;
+	}
+
+    #content {
+        height: 0;
+    }
+
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+	#container {
+		height: 1024px;
+	}
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+	#container {
+		height: 320px;
+        margin-bottom: 4rem;
+	}
+}
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+	#container {
+		height: 568px;
+	}
+}
+/* iPhone 4 */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+	#container {
+		height: 320px;
+	}
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+	#container {
+		height: 480px;
+	}
+}
