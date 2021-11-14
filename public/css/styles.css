@@ -3,8 +3,8 @@
     --text-size-sm: 1.1rem;
     --text-size-sl: 1.5rem;
     --text-size-md: 2rem;
-    --text-size-lg: 2.5rem;
-    --text-size-xl: 4rem;
+    --text-size-lg: 2.3rem;
+    --text-size-xl: 3.2rem;
     --letter-spacing: 0.15rem;
     --color-primary: #f2f2f2;
     --color-secondary: #484848;
@@ -23,9 +23,21 @@
     color: var(--color-primary);
 }
 
-section {
-    height: 100vh;
+body {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh; /* This does not work with iPad because of Apple's own browser issues. Scroll down to see the content in center */
+    min-height: -webkit-fill-available;
     width: 100%;
+}
+
+
+section {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -53,12 +65,16 @@ section {
     justify-content: center;
     align-content: center;
     align-items: center;
-    width: 40%;
+    width: 30%;
     height: 80%;
+    margin-left: 6rem;
     background: none;
 }
 
 #card {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     background: none;
     margin-bottom: 20px;
     margin-right: 50px;

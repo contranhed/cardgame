@@ -13,6 +13,9 @@
     #cardImage {
         height: 300px;
         margin: 10rem;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
     }
 
     .btn {
@@ -24,7 +27,14 @@
 @media screen and (max-width: 43.75em) { 
     #container {
         flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
         margin-bottom: 0px !important;
+    }
+
+    #content {
+        margin-left: 0 !important;
     }
 
     img {
@@ -32,7 +42,7 @@
     }
 
     #cardImage {
-        height: 170px;
+        height: 180px;
         margin-top: 50px !important;
     }
 
@@ -73,7 +83,7 @@
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-	#container {
+    #container {
 		height: 1024px;
 	}
 }
