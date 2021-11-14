@@ -2,7 +2,7 @@
 const lowerButton = document.getElementById('lowerbutton')
 const higherButton = document.getElementById('higherbutton')
 const sameButton = document.getElementById('samebutton')
-const playButton = document.getElementById('playbutton')
+const resetButton = document.getElementById('resetbutton')
 const submitButton = document.getElementById('submitbutton')
 const h1HeaderElement = document.getElementById('h1header')
 const greetingElement = document.getElementById('greeting')
@@ -12,7 +12,7 @@ const imageElement = document.getElementById('cardImage')
 const roundsElement = document.getElementById('rounds')
 const pointsElement = document.getElementById('points')
 
-// Variable that stores the object that represents a deck of cards
+// Declaration of variables used in the application
 let deck = {}
 let playingCard = ''
 let guessingCard = {}
@@ -22,21 +22,19 @@ let points = 0
   
 // EventListener when user chooses button "start game"
 submitButton.addEventListener('click', async () => {
-    // Get and display a card
-    getNewCard()
- 
+    getNewCard() // Get and display a card
     // Display/hide elements as required by the page.
     h1HeaderElement.style.display = 'none'
     submitButton.style.display = 'none'
-    playButton.style.display = 'none'
+    resetButton.style.display = 'none'
     lowerButton.style.display = 'block'
     higherButton.style.display = 'block'
     sameButton.style.display = 'block'
 })
 
 // TODO: Fix tomorrow, it does not work as of now
-playButton.addEventListener('click', async () => {
-    setUpGame()
+resetButton.addEventListener('click', async () => {
+    resetGame()
 })
 
 /**
@@ -48,7 +46,6 @@ async function getDeck() {
         // When called, fetch a deck of cards and store the response in a variable 
         const res = await fetch(
             'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2')
-        
         // When the response has been received, rewrite it to json and store the data in a variable    
         const data = await res.json()
         // Assign the data to the variable declared on top of the file to enable wider access to the deck.
@@ -67,21 +64,16 @@ async function getDeck() {
  */
 async function setUpGame() {
     try {
-        // Function call to get the deck of cards
-        getDeck()
-    
+        getDeck() // Function call to get the deck of cards
         // Remove visibility of buttons not used on landing page
         lowerButton.style.display = 'none'
         higherButton.style.display = 'none'
         sameButton.style.display = 'none'
-        playButton.style.display = 'none'
+        resetButton.style.display = 'none'
         messageElement.style.display = 'none'
         roundsElement.style.display = 'none'
         pointsElement.style.display = 'none'
-        
-        // Insert text to button
-        submitButton.innerText = 'START GAME'
-        
+        submitButton.innerText = 'START GAME' // Insert text to button
     } catch (e) { // Error handling
         console.log('Could not set up the game')
         console.log(e)
@@ -91,23 +83,15 @@ async function setUpGame() {
 /**
  * 
  * @function getNewCard retrieves a playing card from API
- * @returns object playingCard
+ * @returns object with string (playingCard)  
  */
 async function getNewCard() {
     try {
         // Fetch the card from API
         const res = await fetch(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=1`)
-        // Store the response (translated to JSON) in a variable
-        const data = await res.json()
-        // Set the current card to the card value received in the API response
-        playingCard = data.cards[0]
-        console.log('i am now in getNewCard')
-        console.log(playingCard)
-        
-        // Set the image attribute on the card HTML element.
-        cardElement.children[1].setAttribute('src', playingCard.image)
-        console.log('this is ' + data.cards[0].value)
-    
+        const data = await res.json() // Store the response (translated to JSON) in a variable
+        playingCard = data.cards[0] // Set the current card to the card value received in the API response
+        cardElement.children[1].setAttribute('src', playingCard.image) // Set the image attribute on the card HTML element.
         // Insert text in existing element.
         greetingElement.innerText = `Will next card be the same, lower or higher than ${playingCard.value}?`
 
@@ -115,36 +99,29 @@ async function getNewCard() {
         // NB! Taking full advantage of implicit type cocercion in JavaScript!
         if (playingCard.value > 1 && playingCard.value < 10) {
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is below 11')
+            // console.log('this is below 11')
         } 
         else if (playingCard.value == '10') {
             playingCard.value = 10
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is 10')
         }
         else if (playingCard.value == 'JACK') {
             playingCard.value = 11
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is jack')
         } 
         else if (playingCard.value == 'QUEEN') {
             playingCard.value = 12
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is a queen')
         } 
         else if (playingCard.value == 'KING') {
             playingCard.value = 13
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is a king')
         } 
         else if (playingCard.value == 'ACE') {
             playingCard.value = 14
             cardElement.children[1].setAttribute('src', playingCard.image)
-            console.log('this is an ace')
         }
-    console.log('the sent card will be: ' + playingCard.value)
-    // Return the current card object (with reassigned value if needed)
-    return playingCard
+    return playingCard // Return the current card object (with reassigned value if needed)
     } catch(e) { // Error handling
         console.log('Could not draw new card')
         console.log(e)
@@ -158,63 +135,48 @@ async function getNewCard() {
  */
 async function checkAnswer(guess) {
     try {
-       
+        const card = playingCard // Function call and store the result in a variable after the promise has been resolved.
+        oldCard = card // Asssign the value to the variable that is declared on top of the file.
+        const newCard = await getNewCard() // same as above
+        guessingCard = newCard // same as above
 
-            // Function call and store the result in a variable after the promise has been resolved.
-            const card = playingCard
-            // Asssign the value to the variable that is declared on top of the file.
-            oldCard = card
-            console.log('i am now in checkAnswer!')
-            // THIS WORKS!!
-            const newCard = await getNewCard()
-            console.log('this is the OLD value ' + oldCard.value) 
-            // THIS WORKS!
-            guessingCard = newCard
-            console.log('this is the NEW value ' + guessingCard.value)
-            console.log('this is the old type ' + typeof(oldCard.value))
-            console.log('this is the old type ' + typeof(guessingCard.value))
-            console.log('guess it the type of ' + typeof(guess))
-            // Evaluate the card values and check the correct answer
-            // WORKS!
-            let correctAnswer = ''
-            if (oldCard.value > guessingCard.value) {
-                correctAnswer = 'lower'
-            }
-            else if (oldCard.value < guessingCard.value){
-                correctAnswer = 'higher'
+        // Evaluate the card values and check the correct answer
+        let correctAnswer = ''
+        if (oldCard.value > guessingCard.value) {
+            correctAnswer = 'lower'
+        }
+        else if (oldCard.value < guessingCard.value){
+            correctAnswer = 'higher'
 
-            } else if(oldCard.value == guessingCard.value) {
-                correctAnswer = 'same'
-            }
-            console.log('the correct answer is ' + correctAnswer)
-            console.log('the guess was: ' + guess)
-        
-            // WORKS!
-            if (guess == correctAnswer) {
-                console.log('you guessed right!')
-                greetingElement.innerText = 'Yay, you got it right!'
-                points++
-            } else {
-                console.log('you gussed wrong')
-                greetingElement.innerText = 'Sorry, wrong answer!'
-            }
-            rounds++
-            roundsElement.style.display = 'block'
-            pointsElement.style.display = 'block'
-            pointsElement.innerText = `Points: ${points}`
-            roundsElement.innerText = `Round: ${rounds}/10`
-            console.log(`you are on round ${rounds}`)
-            console.log(`you have scored ${points} points`)
-            if (rounds == 10) {
-                roundsElement.style.display = 'none'
-                pointsElement.style.display = 'none'
-                lowerButton.style.display = 'none'
-                higherButton.style.display = 'none'
-                sameButton.style.display = 'none'
-                greetingElement.innerText = `Out of rounds and you scored ${points}`
-                playButton.style.display = 'block'
-                playButton.innerText = 'play again'
-            }
+        } else if(oldCard.value == guessingCard.value) {
+            correctAnswer = 'same'
+        }
+
+        if (guess == correctAnswer) {
+            console.log('you guessed right!')
+            greetingElement.innerText = 'Yay, you got it right!'
+            points++
+        } else {
+            console.log('you gussed wrong')
+            greetingElement.innerText = 'Sorry, wrong answer!'
+        }
+        rounds++
+        roundsElement.style.display = 'block'
+        pointsElement.style.display = 'block'
+        pointsElement.innerText = `Points: ${points}`
+        roundsElement.innerText = `Round: ${rounds}/10`
+
+        if (rounds == 10) {
+            imageElement.style.display = 'none'
+            roundsElement.style.display = 'none'
+            pointsElement.style.display = 'none'
+            lowerButton.style.display = 'none'
+            higherButton.style.display = 'none'
+            sameButton.style.display = 'none'
+            greetingElement.innerText = `Out of rounds and you scored ${points}`
+            resetButton.style.display = 'block'
+            resetButton.innerText = 'play again'
+        }
 
     } catch (e) { // Error handling
         console.log('Could not check the answer')
@@ -222,7 +184,9 @@ async function checkAnswer(guess) {
     }
 }
 
-
+async function resetGame() {
+    window.location.reload()
+}
 
 // Call to start the game.
 setUpGame()

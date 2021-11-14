@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap'); */
 
 :root {
     --text-size-xs: 1rem;
@@ -8,7 +8,7 @@
     --text-size-xl: 3.5rem;
     --letter-spacing: 0.15rem;
     --color-primary: #f2f2f2;
-    --color-secondary: #090909;
+    --color-secondary: #484848;
     --color-highlight: #960018;
 }
 
@@ -16,7 +16,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nova Square', cursive;
+    font-family: 'Righteous', cursive;
+    /* font-family: 'Nova Square', cursive; */
     font-size: 62.5%;
     letter-spacing: var(--letter-spacing);
     background: rgb(9,106,121);
@@ -82,7 +83,7 @@ h2, #cardValue, #message {
     margin-top: 30px;
 }
 
-#higherbutton, #lowerbutton, #submitbutton, #playbutton, #samebutton {
+#higherbutton, #lowerbutton, #submitbutton, #resetbutton, #samebutton {
     background: rgba(255, 255, 255, 0.797);
     border: 1px solid rgb(33, 117, 134);
     color: var( --color-secondary);
@@ -97,7 +98,7 @@ h2, #cardValue, #message {
     outline: none;
 }
 
-#higherbutton:hover, #lowerbutton:hover, #submitbutton:hover, #playbutton:hover, #samebutton:hover {
+#higherbutton:hover, #lowerbutton:hover, #submitbutton:hover, #resetbutton:hover, #samebutton:hover {
     color: white;
     font-size: var(--text-size-lg);
     background: radial-gradient(circle, rgba(9,106,121,1) 0%, rgba(0,212,255,1) 100%);
