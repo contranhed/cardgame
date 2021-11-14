@@ -1,11 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap'); */
-
 :root {
     --text-size-xs: 1rem;
     --text-size-sm: 1.1rem;
     --text-size-md: 2rem;
     --text-size-lg: 2.5rem;
-    --text-size-xl: 3.5rem;
+    --text-size-xl: 4rem;
     --letter-spacing: 0.15rem;
     --color-primary: #f2f2f2;
     --color-secondary: #484848;
@@ -17,7 +15,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Righteous', cursive;
-    /* font-family: 'Nova Square', cursive; */
     font-size: 62.5%;
     letter-spacing: var(--letter-spacing);
     background: rgb(9,106,121);
@@ -34,7 +31,7 @@ section {
 }
 
 #container {
-    width: 80rem;
+    width: 100rem;
     height: 55rem;
     display: flex;
     flex-direction: row;
@@ -111,7 +108,7 @@ h2, #cardValue, #message {
 } */
 
 #cardImage {
-    height: 330px;
+    height: 360px;
     border-radius: 14px;
 }
 
