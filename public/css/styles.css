@@ -5,7 +5,7 @@
     --text-size-md: 2rem;
     --text-size-lg: 2.3rem;
     --text-size-xl: 3.2rem;
-    --letter-spacing: 0.15rem;
+    --letter-spacing: 0.2rem;
     --color-primary: #f2f2f2;
     --color-secondary: #484848;
     --color-highlight: #960018;
@@ -27,7 +27,7 @@ body {
     position: relative;
     top: 0;
     left: 0;
-    height: 100vh; /* This does not work with iPad because of Apple's own browser issues. Scroll down to see the content in center */
+    height: 100vh; /* This does not work with iPad landscape mode because of Apple's own browser issues. Scroll down to see the content in center */
     min-height: -webkit-fill-available;
     width: 100%;
 }
@@ -80,17 +80,25 @@ section {
     margin-right: 50px;
 }
 
-h1  {
+#h1header  {
     margin-bottom: 20px;     
     font-size: var(--text-size-xl);  
     background: none;
 }
 
-h2, #message {
+h2 {
     width: 100%;
-    font-size: var(--text-size-lg);
+    font-size: var(--text-size-md);
     background: none;
     margin-bottom: 20px;
+}
+
+#greeting {
+    font-size: var(--text-size-xl);
+}
+
+#message {
+    font-size: var(--text-size-lg);
 }
 
 #buttons {
@@ -100,7 +108,7 @@ h2, #message {
     margin-top: 20px;
 }
 
-#higherbutton, #lowerbutton, #submitbutton, #resetbutton, #samebutton {
+.btn {
     background: rgba(255, 255, 255, 0.797);
     border: 1px solid rgb(33, 117, 134);
     color: var( --color-secondary);
@@ -112,15 +120,15 @@ h2, #message {
     border: none;
     font-size: var(--text-size-md);
     cursor: pointer;
-    outline: none;
+    outline: none;  
 }
 
-#higherbutton:hover, #lowerbutton:hover, #submitbutton:hover, #resetbutton:hover, #samebutton:hover {
+.btn:hover {
     color: white;
     font-size: var(--text-size-lg);
     background: radial-gradient(circle, rgba(9,106,121,1) 0%, rgba(0,212,255,1) 100%);
     box-shadow: 0px 15px 20px rgba(0,212,255,1);
-    transform: translateY(-7px);
+    transform: translateY(-7px); 
 }
 
 #cardImage {

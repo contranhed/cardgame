@@ -46,8 +46,8 @@ async function getDeck() {
     try {
         const res = await fetch( // When called and the promise has been resolved, fetch a deck of cards and store the response in a variable 
             'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2')
-        const data = await res.json() // When the response has been received, rewrite it to json and store the data in a variable    
-        deck = data // Assign the data to the variable declared on top of the file to enable wider access to the deck.
+        deck = await res.json() // When the response has been received, rewrite it to json and store the data in a variable declared on top of the file to enable wider access to the deck   
+        // deck = data // Could also assign the data to the variable like this.
     }
     catch (e) { // Error handling
         console.log('Not successful with the fetch')
@@ -89,7 +89,8 @@ async function getNewCard() {
             `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=1`)
         const data = await res.json() // Store the response (translated to JSON) in a variable
         playingCard = data.cards[0] // Set the current card to the card value received in the API response
-        containerElement.children[0].setAttribute('src', playingCard.image) // Set the image attribute on the card HTML element.
+        containerElement.children[0].setAttribute('src', playingCard.image) // Set the src attribute on the image element.
+        containerElement.children[0].setAttribute('alt', 'image of a playing card') // Set the alt attribute on the image element.
         
         // Insert text in existing element.
         greetingElement.innerText = `Will next card be the same, lower or higher than ${playingCard.value}?`
@@ -145,7 +146,7 @@ async function checkAnswer(guess) {
             correctAnswer = 'same'
         }
         
-        greetingElement.style.fontSize = '4rem' // Increase font size.
+        // greetingElement.style.fontSize = '4rem' // Increase font size.
         // Check if the player's guess is correct
         if (guess == correctAnswer) {
             greetingElement.innerText = 'CORRECT'

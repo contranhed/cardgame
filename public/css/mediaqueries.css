@@ -1,67 +1,58 @@
 @media screen and (max-width: 56.25em) { 
-    h1 {
-        font-size: var(--text-size-md) !important;  
-    }
-
     h2 {
-        font-size: var(--text-size-md) !important;
+        font-size: var(--text-size-md);
     }
     img {
-        margin: 2rem !important;
+        margin: 2rem;
     }
-
     #cardImage {
-        height: 300px;
-        margin: 10rem;
+        height: 350px;
         justify-content: center;
         align-content: center;
         align-items: center;
+        margin-left: 30px;
     }
-
     .btn {
-        font-size: var(--text-size-sm) !important;
-        padding: 10px !important;
+        font-size: var(--text-size-sm);
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+    #container {
+        margin-left: 0;
     }
 }
-
 @media screen and (max-width: 43.75em) { 
     #container {
         flex-direction: column;
         justify-content: center;
         align-content: center;
         align-items: center;
-        margin-bottom: 0px !important;
+        margin-left: 0;
+        padding: 0;
     }
-
     #content {
-        margin-left: 0 !important;
+        margin: 0;
     }
-
     img {
-        margin: 0rem !important;
+        margin: 0rem;
     }
-
     #cardImage {
         height: 180px;
-        margin-top: 50px !important;
+        margin-top: 50px;
     }
-
     #rounds, #points {
-        font-size: var(--text-size-sl) !important;
-        margin-bottom: 20px !important;
-        margin-top: 0px !important;
+        font-size: var(--text-size-sl);
+        margin-bottom: 20px;
+        margin-top: 0px;
     }
-
     #greeting  {
-        font-size: var(--text-size-md) !important;
+        font-size: var(--text-size-md);
     }
-
     #message {
-        font-size: var(--text-size-sl) !important;
+        font-size: var(--text-size-sl);
         margin-bottom: 0px;
     }
 }
-
 /* Managing Apple product device sizes */
 @media only screen and (device-width : 768px) and (device-width : 1024px) and (orientation : landscape) {
 	#section {
@@ -70,24 +61,19 @@
         justify-content: center;
         align-content: center;
         align-items: center;
-    }
-    
+    } 
     #container {
         height: 768px;
 	}
-
     #content {
         height: 0;
     }
-
 }
-
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
     #container {
 		height: 1024px;
 	}
 }
-
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
 	#container {
 		height: 320px;

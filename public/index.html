@@ -5,30 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game</title>
-    <link rel="stylesheet" href="./public/css/styles.css">
-    <link rel="stylesheet" href="./public/css/mediaqueries.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/mediaqueries.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="app.js" defer></script>
+    <script type="text/javascript" src="/src/app.js" defer></script>
 </head>
 <body>
     <section id="section">
         <div id="container">
-            <img id="cardImage" alt="Image of a card" src="https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cXVlc3Rpb24lMjBtYXJrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
+            <!-- Image by Simone Secci uploaded on webpage Unsplash that provides images for free use -->
+            <img id="cardImage" alt="Image of a question mark" src="./images/questionmark.jpeg"> 
             <div id="content">
                 <div id="progress">
                     <div id="rounds"></div>
                     <div id="points"></div>
                 </div>
-                <h1 id="h1header">Beat the computer</h1>
+                <h1 id="h1header">Beat the computer </h1>
                 <h2 id="greeting">in a card game</h2>
                 <h2 id="message"></h2>
                 <div id="buttons">
-                    <button id="samebutton"onclick="checkAnswer('same')" class="btn">same</button>
+                    <button id="samebutton" onclick="checkAnswer('same')" class="btn">same</button>
                     <button id="lowerbutton" onclick="checkAnswer('lower')" class="btn">lower</button>
-                    <button id="higherbutton"onclick="checkAnswer('higher')" class="btn">higher</button>
+                    <button id="higherbutton" onclick="checkAnswer('higher')" class="btn">higher</button>
                 </div>
-                <button id="submitbutton" class="btn"></button>
-                <button id="resetbutton" class="btn"><a href="index.html"></a></button>
+                <button type="submit"id="submitbutton" class="btn"></button>
+                <button type="reset" id="resetbutton" class="btn"><a href="index.html"></a></button>
             </div>
         </div>
     </section>
