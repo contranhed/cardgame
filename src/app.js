@@ -146,7 +146,6 @@ async function checkAnswer(guess) {
             correctAnswer = 'same'
         }
         
-        // greetingElement.style.fontSize = '4rem' // Increase font size.
         // Check if the player's guess is correct
         if (guess == correctAnswer) {
             greetingElement.innerText = 'CORRECT'
